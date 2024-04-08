@@ -17,6 +17,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject standardTurretPrefab;
     public GameObject missleLauncherPrefab;
+    public GameObject solarPanel;
 
     public GameObject buildEffect;
 

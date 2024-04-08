@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 
     public int health = 100;
 
+    public GameObject deathEffect;
+
     private Transform target;
     private int wavepointIndex = 0;
 
@@ -27,6 +29,9 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+
         Destroy(gameObject);
     }
 
