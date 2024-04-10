@@ -1104,7 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6160b1f668c008459aafbe5c2ad0c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: MainLevel
+  levelToLoad: LevelSelect
   fadeMaster: {fileID: 641884454}
 --- !u!4 &1472792089
 Transform:
