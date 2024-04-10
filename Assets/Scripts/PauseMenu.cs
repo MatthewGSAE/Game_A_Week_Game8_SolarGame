@@ -5,6 +5,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
 
+    public string menuSceneName = "MainMenu";
+
+    public FadeMaster fadeMaster;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,11 +33,12 @@ public class PauseMenu : MonoBehaviour
     public void Retry()
     {
         Toggle();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        fadeMaster.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
-        Debug.Log("Go to menu");
+        Toggle();
+        fadeMaster.FadeTo(menuSceneName);
     }
 }
