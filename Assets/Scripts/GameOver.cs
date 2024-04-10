@@ -6,16 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public Text roundsText;
-
     public string menuSceneName = "MainMenu";
 
     public FadeMaster FadeMaster;
-
-    private void OnEnable()
-    {
-        roundsText.text = PlayerStats.rounds.ToString();
-    }
 
     public void Retry()
     {
