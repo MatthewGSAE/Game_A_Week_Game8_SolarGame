@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-
+    public bool isTutorialDone = true;
 
     public static int enemiesAlive = 0;
 
@@ -23,29 +23,32 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (enemiesAlive > 0)
+        if (isTutorialDone)
         {
-            return;
+            if (enemiesAlive > 0)
+            {
+                return;
+            }
+
+            if (waveIndex == waves.Length)
+            {
+                gameManager.WinLevel();
+                this.enabled = false;
+            }
+
+            if (countdown <= 0)
+            {
+                StartCoroutine(SpawnWave());
+                countdown = timeBetweenWaves;
+                return;
+            }
+
+            countdown -= Time.deltaTime;
+
+            countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+            waveCountdownText.text = string.Format("{0:00.00}", countdown);
         }
-
-        if (waveIndex == waves.Length)
-        {
-            gameManager.WinLevel();
-            this.enabled = false;
-        }
-
-        if (countdown <= 0)
-        {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetweenWaves;
-            return;
-        }
-
-        countdown -= Time.deltaTime;
-
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-        waveCountdownText.text = string.Format("{0:00.00}", countdown);
     }
 
     IEnumerator SpawnWave()
